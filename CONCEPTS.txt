@@ -1,0 +1,12 @@
+implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+implementation 'com.google.code.gson:gson:2.8.8'
+
+//REST_API_WORK_FLOW
+        //PART 1 : RESPONSE_MODEL_CLASS - CONTAINS ALL JSON PARAMETERS.
+        //PART 2 : API_CONTROLLER - STRING URL, RETROFIT OBJ, API_CONTROLLER OBJECT.
+            //2(1) : default constructor creating a retrofit object
+        //2(2) : method to check if api_controller object exists or not.
+        //LINKING API_INTERFACE AND API_CONTROLLER.
+        //2(3) api_interface type of method return api_set.
+        //API_INTERFACE - CONNECTION INTERFACE @FormUrlEncoded. @POST. Call of type Response_model_class.
+
