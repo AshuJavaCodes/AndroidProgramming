@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 public interface Api_Interface {
     @FormUrlEncoded
-    @POST("appLoginNewDevice")
+    @POST("appLoginNewDevice") //API_NAME.
     Call<LoginResponseModel> LoginApi(
             @Field("value") String number,
             @Field("password") String password

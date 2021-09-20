@@ -44,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
                 //FirstStoringItIntoAString.
                 Integer parentId = loginobj.getData().get(0).getParentId();
                 String parentIdString = String.valueOf(parentId);
+                String access = loginobj.getMessage();
+                /*if(access=="false"){
+                    //TOAST
+                }else if(access="true"{
+                        //Intentpass to dashboard.
+                }
+                 */
 
                 mainBinding.parentaddress.setText(loginobj.getData().get(0).getParentAddress());
                 mainBinding.loginmsg.setText(loginobj.getMessage());

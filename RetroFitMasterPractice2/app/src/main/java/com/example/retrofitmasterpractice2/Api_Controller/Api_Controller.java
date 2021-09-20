@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Api_Controller {
-    private static final String url = "http://xx.xxx.xxx.xx:xxxx/WebsiteFolder/";
+    private static final String url = "http://35.200.220.64:1500/aarambhTesting/";
     private static Api_Controller apiController;
     private static Retrofit retrofit;
 
