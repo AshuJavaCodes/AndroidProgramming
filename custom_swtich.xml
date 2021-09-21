@@ -1,0 +1,9 @@
+<androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swOnOff"
+                        android:layout_width="wrap_content"
+                        app:showText="true"
+                        android:textSize="@dimen/_10ssp"
+                        android:fontFamily="@font/roboto_medium"
+                        app:track="@drawable/custom_track"
+                        android:thumb="@drawable/custom_thumb"
+                        android:layout_height="wrap_content"/>
