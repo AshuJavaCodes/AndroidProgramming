@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center"
+        android:text="Default"
+        android:id="@+id/tvData"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20sdp" />
+
+
+    <EditText
+        android:id="@+id/edtNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:singleLine="true"
+        android:inputType="number"
+        android:maxLength="10"
+        android:hint="Enter Your Number"
+        android:padding="@dimen/_12sdp"
+        android:background="@drawable/background_edittext"
+        android:textSize="@dimen/_12sdp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:singleLine="true"
+        android:inputType="number"
+        android:maxLength="10"
+        android:padding="@dimen/_12sdp"
+        android:hint="Enter Your Password"
+        android:background="@drawable/background_edittext"
+        android:textSize="@dimen/_12sdp">
+    </EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btnLogin"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:text="Login"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+
+</LinearLayout>
+
+
+
+</RelativeLayout>
