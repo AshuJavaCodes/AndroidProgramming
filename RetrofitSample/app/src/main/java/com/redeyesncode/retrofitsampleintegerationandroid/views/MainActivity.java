@@ -1,4 +1,4 @@
-package com.redeyesncode.retrofitsampleintegerationandroid;
+package com.redeyesncode.retrofitsampleintegerationandroid.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,10 +10,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.redeyesncode.retrofitsampleintegerationandroid.R;
 import com.redeyesncode.retrofitsampleintegerationandroid.dataModel.CustomerLoginResponseModel;
 import com.redeyesncode.retrofitsampleintegerationandroid.dataModel.LoginInputBody;
 import com.redeyesncode.retrofitsampleintegerationandroid.retrofitService.ApiInterface;
 import com.redeyesncode.retrofitsampleintegerationandroid.retrofitService.RetrofitService;
+import com.redeyesncode.retrofitsampleintegerationandroid.sharedPreferences.AppSession;
+import com.redeyesncode.retrofitsampleintegerationandroid.sharedPreferences.Constant;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -69,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<CustomerLoginResponseModel> call, Response<CustomerLoginResponseModel> response) {
                             if(response.code()==200){
+
+                                String responseAccessToken = response.body().getData().getToken();
+                                AppSession.getInstance(MainActivity.this).setValue(Constant.ACCESS_TOKEN_SHARED_PREFERENCES,responseAccessToken);
+
 
                                 textView.setText(response.body().getData().getUsername());
                                 Toast.makeText(MainActivity.this, "Login Success !", Toast.LENGTH_SHORT).show();
