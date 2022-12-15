@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SharedPreferencesAndroid</string>
+    <string name="store_value_in_shared_pref">Store Value in Shared Pref.</string>
+</resources>
