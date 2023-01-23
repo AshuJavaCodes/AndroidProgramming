@@ -53,8 +53,13 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
 
         String CLIENT_ID = binding.edtCustomerId.getText().toString();
         String CLIENT_SECRET = binding.edtEmpheralKey.getText().toString();
+
+        // Showing Invalid Client Secret.
+
+
         PaymentSheet.CustomerConfiguration customerConfiguration = new PaymentSheet.CustomerConfiguration(CLIENT_ID,CLIENT_SECRET);
-        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.RAZOR_PAY_PUBLISABLE_KEY), new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
+//        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.RAZOR_PAY_PUBLISABLE_KEY), new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
+        paymentSheet.presentWithSetupIntent(CLIENT_SECRET, new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
     }
 
 
