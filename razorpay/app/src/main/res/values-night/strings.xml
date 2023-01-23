@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pay_using_stripe">Pay Using Stripe</string>
+    <string name="payment_using_stripe_link_type">Payment Using Stripe [Link-Type]</string>
+</resources>
