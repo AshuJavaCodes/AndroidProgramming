@@ -5,4 +5,5 @@
     <string name="payment_using_stripe_form_type">Payment Using Stripe [FORM-TYPE]</string>
     <string name="stripe_payment_ui_elements">STRIPE PAYMENT UI ELEMENTS</string>
     <string name="enter_client_secret_here">Enter Client Secret here.</string>
+    <string name="razor_pay_payment">Razor Pay Payment</string>
 </resources>

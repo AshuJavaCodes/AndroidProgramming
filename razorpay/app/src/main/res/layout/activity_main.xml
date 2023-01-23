@@ -64,5 +64,11 @@
 
 
     </LinearLayout>
-
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btnGpay"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:text="GPAY-ANDROID"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

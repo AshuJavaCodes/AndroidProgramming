@@ -19,7 +19,6 @@ import com.stripe.android.paymentsheet.PaymentSheetResultCallback;
 public class MainActivity extends AppCompatActivity implements PaymentSheetResultCallback  {
 
     private ActivityMainBinding binding;
-
     private PaymentSheet paymentSheet;
 
 
@@ -37,6 +36,41 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
         PaymentConfiguration.init(MainActivity.this, String.valueOf(R.string.RAZOR_PAY_PUBLISABLE_KEY));
         paymentSheet = new PaymentSheet(this,this::onPaymentSheetResult);
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showToast("onResume : Lifecycle Callback");
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showToast("onRestart : Lifecycle Callback");
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        showToast("onPause : Lifecycle Callback");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        showToast("onStop : Lifecycle Callback");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        showToast("onStart : Lifecycle Callback");
+    }
+
+
 
     private void presentPaymentSheet(){
 
@@ -58,8 +92,10 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
 
 
         PaymentSheet.CustomerConfiguration customerConfiguration = new PaymentSheet.CustomerConfiguration(CLIENT_ID,CLIENT_SECRET);
-//        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.RAZOR_PAY_PUBLISABLE_KEY), new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
-        paymentSheet.presentWithSetupIntent(CLIENT_SECRET, new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
+//        PaymentSheet.CustomerConfiguration customerConfiguration = new PaymentSheet.CustomerConfiguration("pi_3MTMPKSGxlhGWErC1ZjNfndN_secret_zfOoK3tptET9HzhI4OHp88WpT","pi_3MTMPKSGxlhGWErC1ZjNfndN");
+//        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.RAZOR_PAY_SECRET_KEY), new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
+        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.RAZOR_PAY_PUBLISABLE_KEY),new PaymentSheet.Configuration("SwagStay-Hotel",customerConfiguration));
+//        paymentSheet.presentWithSetupIntent(CLIENT_SECRET, new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
     }
 
 
@@ -78,7 +114,11 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
 
         });
         binding.btnFormType.setOnClickListener(v -> {
-            showToast("Please get Empheral Key First.");
+            Intent razorPayIntent = new Intent(MainActivity.this,RazorPayActivity.class);
+            startActivity(razorPayIntent);
+
+
+
         });
 
 
@@ -86,15 +126,15 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
 
     private void askPermission(){
         // Sometime stripe needs location permission as well for certain payments.
-
-
-
     }
 
     @Override
     public void onPaymentSheetResult(@NonNull PaymentSheetResult paymentSheetResult) {
         showToast("OnPaymentSheetResult."+paymentSheetResult.toString());
         Log.i("DEV_ASHUTOSH", "onPaymentSheetResult: "+paymentSheetResult.toString());
+
+
+
 
         // You will get callback here it self (Can Also check in the Activity LifeCycle Callbacks)
 //        PaymentSheetResult.Failed
