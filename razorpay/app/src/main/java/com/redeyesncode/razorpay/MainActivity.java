@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
             startActivity(i);
 
         });
+        binding.btnFormType.setOnClickListener(v -> {
+            showToast("Please get Empheral Key First.");
+        });
 
 
     }

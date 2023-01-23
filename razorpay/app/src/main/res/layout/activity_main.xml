@@ -28,8 +28,23 @@
             android:layout_height="wrap_content"/>
 
 
-
-
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/tvUiElements"
+            android:text="@string/stripe_payment_ui_elements"
+            android:background="@color/black"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+        <com.stripe.android.view.CardFormView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="match_parent"
+            android:id="@+id/btnFormType"
+            android:text="@string/payment_using_stripe_form_type"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

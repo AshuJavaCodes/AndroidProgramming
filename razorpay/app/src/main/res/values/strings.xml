@@ -4,4 +4,6 @@
     <string name="RAZOR_PAY_SECRET_KEY">sk_test_51MTJ3WSGxlhGWErCSNOb0EsUx6t3bmKZBM6E35PFJx8VPdj3rfTthnb6ymURRgUchzdv7YTm7q0feSrbzDbV31Fc00ezeQQpou</string>
     <string name="pay_using_stripe">Pay Using Stripe [Payment Intent]</string>
     <string name="payment_using_stripe_link_type">Payment Using Stripe [Link-Type]</string>
+    <string name="payment_using_stripe_form_type">Payment Using Stripe [FORM-TYPE]</string>
+    <string name="stripe_payment_ui_elements">STRIPE PAYMENT UI ELEMENTS</string>
 </resources>

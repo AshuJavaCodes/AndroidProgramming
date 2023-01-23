@@ -2,4 +2,6 @@
 <resources>
     <string name="pay_using_stripe">Pay Using Stripe</string>
     <string name="payment_using_stripe_link_type">Payment Using Stripe [Link-Type]</string>
+    <string name="payment_using_stripe_form_type">Payment Using Stripe [FORM-TYPE]</string>
+    <string name="stripe_payment_ui_elements">STRIPE PAYMENT UI ELEMENTS</string>
 </resources>
