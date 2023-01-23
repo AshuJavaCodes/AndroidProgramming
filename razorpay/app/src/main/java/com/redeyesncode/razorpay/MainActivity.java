@@ -43,9 +43,18 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
         // Here we need two keys from the back-end server itself. which are.
         // Customer-id key and the ephemeralKey (client-secret) key from backend itself.
 
+        /*{
+    "CLIENT_SECRET": "pi_3MTME5SGxlhGWErC0vNGcaaH_secret_RzQqK8EI0BeGnlSgCUtLurZMe",
+    "CLIENT_CURRENCY": "usd",
+    "CLIENT_ID": "pi_3MTME5SGxlhGWErC0vNGcaaH"
+}*/
 
 
-        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.RAZOR_PAY_SECRET_KEY),new PaymentSheet.Configuration("SwagStay-Hotels",new PaymentSheet.CustomerConfiguration("1",String.valueOf(R.string.RAZOR_PAY_SECRET_KEY))));
+
+        String CLIENT_ID = binding.edtCustomerId.getText().toString();
+        String CLIENT_SECRET = binding.edtEmpheralKey.getText().toString();
+        PaymentSheet.CustomerConfiguration customerConfiguration = new PaymentSheet.CustomerConfiguration(CLIENT_ID,CLIENT_SECRET);
+        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.RAZOR_PAY_PUBLISABLE_KEY), new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
     }
 
 

@@ -15,11 +15,11 @@
         android:layout_height="wrap_content">
         <Button
             android:layout_width="match_parent"
-            android:id="@+id/btnStripe"
-            android:text="@string/pay_using_stripe"
+            android:id="@+id/btnFormType"
+            android:text="@string/payment_using_stripe_form_type"
             android:textAllCaps="false"
-
             android:layout_height="wrap_content"/>
+
         <Button
             android:layout_width="match_parent"
             android:id="@+id/btnLinkType"
@@ -39,12 +39,29 @@
         <com.stripe.android.view.CardFormView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/edtEmpheralKey"
+            android:inputType="text"
+
+            android:hint="@string/enter_client_secret_here"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/edtCustomerId"
+            android:inputType="text"
+
+            android:hint="Enter Client Id Here"
+            android:layout_height="wrap_content"/>
+
         <Button
             android:layout_width="match_parent"
-            android:id="@+id/btnFormType"
-            android:text="@string/payment_using_stripe_form_type"
+            android:id="@+id/btnStripe"
+            android:text="@string/pay_using_stripe"
             android:textAllCaps="false"
+
             android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
 
