@@ -52,4 +52,8 @@ dependencies {
     implementation 'com.razorpay:checkout:1.6.26'
 
 
+    // Gpay Android SDK
+    implementation 'com.google.android.gms:play-services-pay:16.1.0'
+    implementation 'com.google.android.gms:play-services-wallet:19.1.0'
+
 }

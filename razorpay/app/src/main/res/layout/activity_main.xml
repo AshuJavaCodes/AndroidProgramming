@@ -71,4 +71,11 @@
         android:text="GPAY-ANDROID"
         android:textAllCaps="false"
         android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btnPhonePe"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:text="PHONEPE-ANDROID"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

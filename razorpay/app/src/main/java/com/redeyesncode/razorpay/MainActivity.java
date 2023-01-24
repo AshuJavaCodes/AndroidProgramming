@@ -104,6 +104,12 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
             presentPaymentSheet();
         });
 
+        binding.btnPhonePe.setOnClickListener(v->{
+            startActivity(new Intent(MainActivity.this,PhonePeActivity.class));
+
+
+        });
+
         binding.btnLinkType.setOnClickListener(v -> {
 
             // Stripe test cards --> 4242424242424242
@@ -116,8 +122,11 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
         binding.btnFormType.setOnClickListener(v -> {
             Intent razorPayIntent = new Intent(MainActivity.this,RazorPayActivity.class);
             startActivity(razorPayIntent);
+        });
 
-
+        binding.btnGpay.setOnClickListener(v -> {
+            Intent gpayIntent = new Intent(MainActivity.this,GooglePayActivity.class);
+            startActivity(gpayIntent);
 
         });
 

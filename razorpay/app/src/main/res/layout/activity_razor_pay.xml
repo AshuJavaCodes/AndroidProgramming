@@ -10,6 +10,7 @@
     <Button
         android:layout_width="match_parent"
         android:id="@+id/btnRazorPay"
+        android:layout_marginHorizontal="@dimen/_12sdp"
         android:text="@string/razor_pay_payment"
         android:textAllCaps="false"
         android:layout_height="wrap_content"/>

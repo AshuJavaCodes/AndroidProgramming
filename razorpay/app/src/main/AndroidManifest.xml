@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Razorpay"
         tools:targetApi="31">
         <activity
+            android:name=".PhonePeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GooglePayActivity"
+            android:exported="false" />
+        <activity
             android:name=".RazorPayActivity"
             android:exported="false" />
         <activity
@@ -27,6 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
     </application>
 
 </manifest>
