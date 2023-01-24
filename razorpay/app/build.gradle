@@ -56,4 +56,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-pay:16.1.0'
     implementation 'com.google.android.gms:play-services-wallet:19.1.0'
 
+    // PhonePe Android SDK
+//    implementation "phonepe.intentsdk.android.snapshot:IntentSDK:1.7.1-546661-SNAPSHOT"
+
+    //JSON PARSING DEPENDENCY
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.9.1'
+
 }
