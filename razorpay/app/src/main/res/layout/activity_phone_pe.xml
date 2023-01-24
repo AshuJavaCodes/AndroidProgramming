@@ -25,4 +25,16 @@
         android:text="SDK_Less PhonePe"
         android:textAllCaps="false"
         android:layout_height="wrap_content"/>
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        style="@style/Widget.AppCompat.SeekBar"
+        android:progressDrawable="@drawable/seekbar_progress"
+        android:thumb="@drawable/seekbar_thumb"
+        android:splitTrack="false"
+        android:layout_height="wrap_content"/>
+
+
+
 </LinearLayout>

@@ -27,7 +27,6 @@ public class PhonePeActivity extends AppCompatActivity {
         binding = ActivityPhonePeBinding.inflate(getLayoutInflater());
 //        initClicks();
         // TODO : FACING DIFFICULTY IN PHONE PE DEPENDENCY of Gradle.
-
 //        PhonePe.init(PhonePeActivity.this);
 
         binding.btnSdkLessPhonePe.setOnClickListener(v->{
