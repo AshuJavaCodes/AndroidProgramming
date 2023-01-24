@@ -2,11 +2,13 @@
     <string name="app_name">razorpay</string>
     <string name="STRIPE_PUBLISABLE_KEY">PUBLISHABLE_KEY_HERE</string>
     <string name="STRIPE_PAY_SECRET_KEY">SECRET_KEY_HERE</string>
-    <string name="RAZOR_PAY_SECRET_KEY">RAZOR_PAY_KEY_HERE</string>
+    <string name="RAZOR_PAY_SECRET_KEY">rzp_test_CoEUjcxQj6CkhA</string>
     <string name="pay_using_stripe">Pay Using Stripe [Payment Intent]</string>
     <string name="payment_using_stripe_link_type">Payment Using Stripe [Link-Type]</string>
     <string name="payment_using_stripe_form_type">RAZOR-PAY [FORM-TYPE]</string>
     <string name="stripe_payment_ui_elements">STRIPE PAYMENT UI ELEMENTS</string>
     <string name="enter_client_secret_here">Enter Client Secret here.</string>
     <string name="razor_pay_payment">Razor Pay Payment</string>
+    <string name="enter_order_id_to_check_status">Enter Order Id to Check Status</string>
+    <string name="check_order_status">Check Order Status</string>
 </resources>

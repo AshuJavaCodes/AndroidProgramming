@@ -6,4 +6,6 @@
     <string name="stripe_payment_ui_elements">STRIPE PAYMENT UI ELEMENTS</string>
     <string name="enter_client_secret_here">Enter Client Secret here.</string>
     <string name="razor_pay_payment">Razor Pay Payment</string>
+    <string name="enter_order_id_to_check_status">Enter Order Id to Check Status</string>
+    <string name="check_order_status">Check Order Status</string>
 </resources>

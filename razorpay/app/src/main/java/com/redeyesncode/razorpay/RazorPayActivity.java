@@ -4,9 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.razorpay.Checkout;
 import com.razorpay.PayloadHelper;
 import com.razorpay.PaymentResultListener;
@@ -14,6 +21,9 @@ import com.redeyesncode.razorpay.databinding.ActivityRazorPayBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RazorPayActivity extends AppCompatActivity implements PaymentResultListener {
 
@@ -67,7 +77,9 @@ public class RazorPayActivity extends AppCompatActivity implements PaymentResult
         showToast("Payment Successfully done !");
         Log.i("DEV_ASHUTOSH", "onPaymentSuccess: "+s);
         binding.tvPaymentStatus.setText("SUCCESS PAYMENT !");
-
+        binding.tvPaymentStatus.setTextColor(getColor(R.color.white));
+        binding.tvPaymentStatus.setBackgroundColor(getColor(R.color.black));
+        binding.edtRazorOrderId.setText("");
     }
 
     @Override
@@ -75,7 +87,9 @@ public class RazorPayActivity extends AppCompatActivity implements PaymentResult
         showToast(s);
         Log.i("DEV_ASHUTOSH", "onPaymentError: "+s);
         binding.tvPaymentStatus.setText("FAILED PAYMENT !");
-
+        binding.tvPaymentStatus.setTextColor(getColor(R.color.white));
+        binding.tvPaymentStatus.setBackgroundColor(getColor(R.color.red));
+        binding.edtRazorOrderId.setText("");
 
     }
 
@@ -114,47 +128,137 @@ public class RazorPayActivity extends AppCompatActivity implements PaymentResult
 
     }
 
-    private void setupPaymentFlow(){
+    private void setupPaymentFlow() throws JSONException {
         Checkout checkout = new Checkout();
-        checkout.setKeyID("RAZOR_PAY_LIVE_KEY_HERE");
+
+        // Please Don't use String.valueof(R.string.RAZOR_PAY_KEY)
+        checkout.setKeyID("rzp_test_CoEUjcxQj6CkhA");
         // Using Large image cause problems.
 //        checkout.setImage(R.drawable.hotel_ic);
 
-
-        PayloadHelper payloadHelper = new PayloadHelper("INR", 100, "order_L7bkerUGm8DAKr");
+        //Using Payload helper.
+        PayloadHelper payloadHelper = new PayloadHelper("INR", 100, binding.edtRazorOrderId.getText().toString());
         payloadHelper.setAmount(100);
         payloadHelper.setCurrency("INR");
-        payloadHelper.setOrderId("order_L7bkerUGm8DAKr");
+        payloadHelper.setOrderId(binding.edtRazorOrderId.getText().toString());
+        JSONObject payloadHelperJsonObject = payloadHelper.getJson();
 
-        JSONObject jsonObject = payloadHelper.getJson();
+        // Using JsonObject
+//        JSONObject options = new JSONObject();
+//        options.put("order_id","order_L7yiOvkdChcXOk");
+//        options.put("name","ashutosh_singh");
+//        options.put("currency", "INR");
+//        options.put("amount", "50000");
+
         // Convert payload helper to json object android.
-
-        checkout.open(RazorPayActivity.this,jsonObject);
-
-
+        checkout.open(RazorPayActivity.this,payloadHelperJsonObject);
     }
+
+    private void checkOrderStatusByVolley(String orderId) throws JSONException {
+        // We can call this method or this specific api again to check.
+//        https://api.razorpay.com/v1/orders/{order_id}
+        // For calling Api's in Volley (RequestQueue) is required.
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        String RAZOR_PAY_URL = "https://api.razorpay.com/v1/orders/"+orderId;
+
+        // TODO : NEED TO PASS BASIC AUTH PARAMS TO THE VOLLEY REQUEST AS WELL.
+        JSONObject params = new JSONObject();
+        params.put("username", "rzp_test_CoEUjcxQj6CkhA");
+        params.put("password", "uCfEVHanVkZTDHbDqluSSQSb");
+
+        // JsonObject-Request as we are getting JSON-Object in response.
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, RAZOR_PAY_URL, null, response -> {
+            // Success Response is noted here.
+            binding.tvOrderPaymentStatus.setTextColor(getColor(R.color.white));
+
+
+            try {
+                binding.tvOrderPaymentStatus.setText(response.getJSONObject("nameValuePairs")
+                        .getJSONObject("items")
+                        .getJSONArray("values")
+                        .getJSONObject(0)
+                        .getJSONObject("nameValuePairs")
+                        .getString("status"));
+            }catch (Exception e){
+                // Cannot parse json data hence showing it all.
+                binding.tvOrderPaymentStatus.setText(new Gson().toJson(response));
+                Log.i("DEV_ASHUTOSH", "checkOrderStatus: "+new Gson().toJson(response));
+            }
+            binding.tvOrderPaymentStatus.setBackgroundColor(getColor(R.color.green));
+        }, error -> {
+            // Error Response is noted here.
+            showToast("Error");
+            Log.i("DEV_ASHUTOSH", "checkOrderStatus: "+error.toString());
+            binding.tvOrderPaymentStatus.setTextColor(getColor(R.color.white));
+            binding.tvOrderPaymentStatus.setText(error.toString());
+            binding.tvOrderPaymentStatus.setBackgroundColor(getColor(R.color.red));
+        }){
+            // Razor-Pay Needs Basic Type of Auth. (Base64 String format)
+            // Overide below method to give specific keys to razor pay.
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                // Get base64 key from postman itself.
+                headers.put("Authorization", "Basic cnpwX3Rlc3RfQ29FVWpjeFFqNkNraEE6dUNmRVZIYW5Wa1pUREhiRHFsdVNTUVNi");
+                return headers;
+            }
+
+            // In-Order to Handle 200,400 Success & Error Code.
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+                if(response.statusCode==400){
+                    binding.tvOrderPaymentStatus.setTextColor(getColor(R.color.white));
+                    binding.tvOrderPaymentStatus.setText("400 Bad Request");
+                    binding.tvOrderPaymentStatus.setBackgroundColor(getColor(R.color.red));
+                }
+
+                return super.parseNetworkResponse(response);
+            }
+        };
+
+        // At last, call the api.
+        requestQueue.add(jsonObjectRequest);
+    }
+
+
 
     private void initClicks(){
 
         binding.btnRazorPay.setOnClickListener(v -> {
-            setupPaymentFlow();
+            try {
+                if(binding.edtRazorOrderId.getText().toString().isEmpty()){
+                    showToast("Please enter Order Id");
+                }else{
+                    setupPaymentFlow();
+
+                }
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
 //            setupJsonPaymentFlow();
 
 
         });
 
+        binding.btnRazorPayOrderStatus.setOnClickListener(v -> {
+            if(binding.edtRazorStatus.getText().toString().isEmpty()){
+                showToast("Please enter razor pay id.");
+            }else{
+                try {
+                    checkOrderStatusByVolley(binding.edtRazorOrderId.getText().toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
+
     }
 
     private void setupRazorPay() {
-        /*$keyId="rzp_live_vbHedWXko3D1wH";
-$keySecret="B0EyozZkR9jGX0e1NWq7HcaZ";*/
         Checkout.preload(RazorPayActivity.this);
-
-
-
-
-
-
-
     }
 }
