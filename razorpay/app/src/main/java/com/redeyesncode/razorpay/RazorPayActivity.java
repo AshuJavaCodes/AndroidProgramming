@@ -102,7 +102,6 @@ public class RazorPayActivity extends AppCompatActivity implements PaymentResult
         Checkout checkout = new Checkout();
         checkout.setKeyID(String.valueOf(R.string.RAZOR_PAY_SECRET_KEY));
 //        checkout.setImage(R.drawable.hotel_ic);
-
         JSONObject options = new JSONObject();
 
        try {
@@ -171,28 +170,26 @@ public class RazorPayActivity extends AppCompatActivity implements PaymentResult
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, RAZOR_PAY_URL, null, response -> {
             // Success Response is noted here.
             binding.tvOrderPaymentStatus.setTextColor(getColor(R.color.white));
-
-
             try {
-                binding.tvOrderPaymentStatus.setText(response.getJSONObject("nameValuePairs")
-                        .getJSONObject("items")
-                        .getJSONArray("values")
-                        .getJSONObject(0)
-                        .getJSONObject("nameValuePairs")
-                        .getString("status"));
+//                binding.tvOrderPaymentStatus.setText(response.getJSONObject("nameValuePairs")
+//                        .getJSONObject("items")
+//                        .getJSONArray("values")
+//                        .getJSONObject(0)
+//                        .getJSONObject("nameValuePairs")
+//                        .getString("status"));
             }catch (Exception e){
                 // Cannot parse json data hence showing it all.
-                binding.tvOrderPaymentStatus.setText(new Gson().toJson(response));
+//                binding.tvOrderPaymentStatus.setText(new Gson().toJson(response));
                 Log.i("DEV_ASHUTOSH", "checkOrderStatus: "+new Gson().toJson(response));
             }
-            binding.tvOrderPaymentStatus.setBackgroundColor(getColor(R.color.green));
+//            binding.tvOrderPaymentStatus.setBackgroundColor(getColor(R.color.green));
         }, error -> {
             // Error Response is noted here.
             showToast("Error");
             Log.i("DEV_ASHUTOSH", "checkOrderStatus: "+error.toString());
-            binding.tvOrderPaymentStatus.setTextColor(getColor(R.color.white));
-            binding.tvOrderPaymentStatus.setText(error.toString());
-            binding.tvOrderPaymentStatus.setBackgroundColor(getColor(R.color.red));
+//            binding.tvOrderPaymentStatus.setTextColor(getColor(R.color.white));
+//            binding.tvOrderPaymentStatus.setText(error.toString());
+//            binding.tvOrderPaymentStatus.setBackgroundColor(getColor(R.color.red));
         }){
             // Razor-Pay Needs Basic Type of Auth. (Base64 String format)
             // Overide below method to give specific keys to razor pay.
@@ -208,9 +205,9 @@ public class RazorPayActivity extends AppCompatActivity implements PaymentResult
             @Override
             protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                 if(response.statusCode==400){
-                    binding.tvOrderPaymentStatus.setTextColor(getColor(R.color.white));
-                    binding.tvOrderPaymentStatus.setText("400 Bad Request");
-                    binding.tvOrderPaymentStatus.setBackgroundColor(getColor(R.color.red));
+//                    binding.tvOrderPaymentStatus.setTextColor(getColor(R.color.white));
+//                    binding.tvOrderPaymentStatus.setText("400 Bad Request");
+//                    binding.tvOrderPaymentStatus.setBackgroundColor(getColor(R.color.red));
                 }
 
                 return super.parseNetworkResponse(response);
