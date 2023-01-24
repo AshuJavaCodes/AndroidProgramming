@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.redeyesncode.razorpay.databinding.ActivityMainBinding;
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
     }
 
     private void setupRazorPay() {
-        PaymentConfiguration.init(MainActivity.this, String.valueOf(R.string.RAZOR_PAY_PUBLISABLE_KEY));
+        PaymentConfiguration.init(MainActivity.this, String.valueOf(R.string.STRIPE_PUBLISABLE_KEY));
         paymentSheet = new PaymentSheet(this,this::onPaymentSheetResult);
     }
 
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements PaymentSheetResul
         PaymentSheet.CustomerConfiguration customerConfiguration = new PaymentSheet.CustomerConfiguration(CLIENT_ID,CLIENT_SECRET);
 //        PaymentSheet.CustomerConfiguration customerConfiguration = new PaymentSheet.CustomerConfiguration("pi_3MTMPKSGxlhGWErC1ZjNfndN_secret_zfOoK3tptET9HzhI4OHp88WpT","pi_3MTMPKSGxlhGWErC1ZjNfndN");
 //        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.RAZOR_PAY_SECRET_KEY), new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
-        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.RAZOR_PAY_PUBLISABLE_KEY),new PaymentSheet.Configuration("SwagStay-Hotel",customerConfiguration));
+        paymentSheet.presentWithPaymentIntent(String.valueOf(R.string.STRIPE_PUBLISABLE_KEY),new PaymentSheet.Configuration("SwagStay-Hotel",customerConfiguration));
 //        paymentSheet.presentWithSetupIntent(CLIENT_SECRET, new PaymentSheet.Configuration("HotelSwag-Stay",customerConfiguration));
     }
 

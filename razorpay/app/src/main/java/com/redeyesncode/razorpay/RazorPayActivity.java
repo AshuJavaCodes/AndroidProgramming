@@ -86,7 +86,7 @@ public class RazorPayActivity extends AppCompatActivity implements PaymentResult
 
     private void setupJsonPaymentFlow(){
         Checkout checkout = new Checkout();
-        checkout.setKeyID("rzp_live_vbHedWXko3D1wH");
+        checkout.setKeyID(String.valueOf(R.string.RAZOR_PAY_SECRET_KEY));
 //        checkout.setImage(R.drawable.hotel_ic);
 
         JSONObject options = new JSONObject();
