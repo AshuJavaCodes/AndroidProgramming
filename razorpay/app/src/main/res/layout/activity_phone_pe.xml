@@ -30,7 +30,15 @@
             android:text="SDK_Less PhonePe"
             android:textAllCaps="false"
             android:layout_height="wrap_content"/>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/tvPaymentStatus"
+            android:background="@color/black"
+            android:text="PAYMENT STATUS"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_12sdp"
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>

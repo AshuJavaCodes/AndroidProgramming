@@ -96,12 +96,14 @@ public class PhonePeActivity extends AppCompatActivity {
 
             // Checksum and ApiEndPoint Are the two things needed from backend.
 
+
+            // These 3 points are needed from the backend in order for PhonePe SDK to work.
+            // checksum, apiEndpoint, base64Body
             B2BPGRequest b2BPGRequest = new B2BPGRequestBuilder()
-                    .setData(base64Body)
+                    .setData("base64Body")
                     .setChecksum("checksum")
                     .setUrl("apiEndPoint")
                     .build();
-
             try {
                 startActivityForResult(PhonePe.getImplicitIntent(this,b2BPGRequest,"net.one97.paytm"),B2B_PAYMENT_REQUEST_CODE);
             }catch (Exception e){
@@ -185,7 +187,7 @@ public class PhonePeActivity extends AppCompatActivity {
         String str = data.get(0);
         Log.e("UPIPAY", "upiPaymentDataOperation: " + str);
         String paymentCancel = "";
-        if (str == null) str = "discard";
+        if (str == null) str = "discawrd";
         String status = "";
         String approvalRefNo = "";
         String txnRef = "";
@@ -214,14 +216,23 @@ public class PhonePeActivity extends AppCompatActivity {
 
         if (status.equalsIgnoreCase("success")) {
             //Code to handle successful transaction here.
-            Toast.makeText(this, "Transaction successful.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Transaction successfull.", Toast.LENGTH_SHORT).show();
+            binding.tvPaymentStatus.setTextColor(getColor(R.color.white));
+            binding.tvPaymentStatus.setText("Transaction successfull.");
+            binding.tvPaymentStatus.setBackgroundColor(getColor(R.color.green));
             Log.e("UPI", "txnId: "+txnId);
             Log.e("UPI", "responseStr: "+approvalRefNo);
             Log.e("UPI", "txnRef: "+txnRef);
         } else if (paymentCancel.equalsIgnoreCase("Payment cancelled by user.")) {
             Toast.makeText(this, "Payment cancelled by user.", Toast.LENGTH_SHORT).show();
+            binding.tvPaymentStatus.setTextColor(getColor(R.color.white));
+            binding.tvPaymentStatus.setText("Payment cancelled by user.");
+            binding.tvPaymentStatus.setBackgroundColor(getColor(R.color.red));
         } else {
             Toast.makeText(this, "Transaction failed.Please try again", Toast.LENGTH_SHORT).show();
+            binding.tvPaymentStatus.setTextColor(getColor(R.color.white));
+            binding.tvPaymentStatus.setText("Transaction failed. Please try again.");
+            binding.tvPaymentStatus.setBackgroundColor(getColor(R.color.red));
         }
     }
 
