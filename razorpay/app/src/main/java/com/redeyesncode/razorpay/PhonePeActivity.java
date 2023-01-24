@@ -29,10 +29,13 @@ public class PhonePeActivity extends AppCompatActivity {
         // TODO : FACING DIFFICULTY IN PHONE PE DEPENDENCY of Gradle.
 
 //        PhonePe.init(PhonePeActivity.this);
+
+        binding.btnSdkLessPhonePe.setOnClickListener(v->{
+
+        });
         setContentView(binding.getRoot());
     }
     private void showToast(String message){
-
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
     }

@@ -19,4 +19,10 @@
         android:text="List All Upi Apps"
         android:textAllCaps="false"
         android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btnSdkLessPhonePe"
+        android:text="SDK_Less PhonePe"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
