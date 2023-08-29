@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/fragment_explore"
+        android:icon="@drawable/ic_eye_explore"
+        app:showAsAction="always"
+
+        android:title="Explore" />
+    <item
+        android:id="@+id/fragment_network"
+        android:icon="@drawable/ic_network"
+        app:showAsAction="always"
+
+        android:title="Network" />
+    <item
+        android:id="@+id/fragment_chat"
+        android:icon="@drawable/ic_chat"
+        app:showAsAction="always"
+
+        android:title="Chat" />
+    <item
+        android:id="@+id/fragment_contact"
+        android:icon="@drawable/ic_contact"
+        app:showAsAction="always"
+
+        android:title="Contacts" />
+    <item
+        android:id="@+id/fragment_groups"
+        android:icon="@drawable/ic_hash_group"
+        app:showAsAction="always"
+
+        android:title="Groups" />
+</menu>
