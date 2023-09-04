@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".BasicViewsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/tvLogin"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:background="@android:color/holo_orange_light"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="11sp"
+        android:textAlignment="center"
+        android:text="SAMPLE BASIC VIEWS IN ANDROID"
+        android:layout_height="wrap_content"/>
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/edtUsername"
+        android:hint="Enter your username here !"
+        android:textColorHint="@android:color/holo_orange_light"
+        android:layout_marginTop="24dp"
+        android:imeOptions="actionNext"
+        android:textColor="@color/black"
+
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/edtNumber"
+        android:hint="@string/enter_your_number_here"
+        android:layout_marginTop="24dp"
+        android:inputType="number"
+        android:maxLength="10"
+        android:imeOptions="actionDone"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_width="145dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_android_image"
+        android:layout_height="145dp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:buttonTint="@android:color/holo_orange_light"
+        android:text="DISABLE AUTO ROTATION OF SCREEN"
+        android:layout_height="wrap_content"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:text="Option 1"
+            android:layout_height="wrap_content"/>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:text="Option 4"
+            android:layout_height="wrap_content"/>
+
+
+    </RadioGroup>
+
+    <ProgressBar
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:layout_width="match_parent"
+        android:max="100"
+        android:min="0"
+        android:layout_marginTop="30dp"
+
+        android:progress="25"
+        android:layout_height="wrap_content"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
